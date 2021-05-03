@@ -106,5 +106,5 @@ def json_courses(request):
 
 def api_courses_show(request, course_id):
     pst = course_find(course_id)
-    dict_obj = model_to_dict(pst)
+    dict_obj = model_to_dict(crs)
     return JsonResponse(dict_obj, safe=False)
