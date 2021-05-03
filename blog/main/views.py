@@ -87,9 +87,6 @@ def search_title(request):
         if finish_date:
             filter_obj.update({"finish_date__lte": finish_date})
         titles = Course.objects.filter(**filter_obj)
-        # titles = Course.objects.filter(title__contains=searched,
-        #                                start_date__gte=start_date,
-        #                                finish_date__lte=finish_date)
         return render(request, 'main/search_title.html', {'searched': searched,
                                                           'start_date': start_date,
                                                           'finish_date': finish_date,
