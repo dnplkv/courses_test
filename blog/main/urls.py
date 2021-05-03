@@ -15,5 +15,5 @@ urlpatterns = [
     path('courses/search/', views.search_title, name="search_title"),
 
     path('api/courses/', views.json_courses, name='json_data'),
-    path('api/courses/<int:post_id>/', views.api_courses_show, name='api_courses_show'),
+    path('api/courses/<int:course_id>/', views.api_courses_show, name='api_courses_show'),
 ]

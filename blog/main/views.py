@@ -87,9 +87,6 @@ def search_title(request):
         if finish_date:
             filter_obj.update({"finish_date__lte": finish_date})
         titles = Course.objects.filter(**filter_obj)
-        # titles = Course.objects.filter(title__contains=searched,
-        #                                start_date__gte=start_date,
-        #                                finish_date__lte=finish_date)
         return render(request, 'main/search_title.html', {'searched': searched,
                                                           'start_date': start_date,
                                                           'finish_date': finish_date,
@@ -105,6 +102,6 @@ def json_courses(request):
 
 
 def api_courses_show(request, course_id):
-    pst = course_find(course_id)
-    dict_obj = model_to_dict(pst)
+    crs = course_find(course_id)
+    dict_obj = model_to_dict(crs)
     return JsonResponse(dict_obj, safe=False)
