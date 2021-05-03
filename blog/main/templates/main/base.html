@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>{% block title %}{% endblock %}</title>
+
+    {% load static %}
+
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'imgs/favicon' %}/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'imgs/favicon' %}/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'imgs/favicon' %}/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'imgs/favicon' %}/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'imgs/favicon' %}/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'imgs/favicon' %}/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'imgs/favicon' %}/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'imgs/favicon' %}/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'imgs/favicon' %}/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'imgs/favicon' %}/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'imgs/favicon' %}/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'imgs/favicon' %}/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'imgs/favicon' %}/favicon-16x16.png">
+    <link rel="manifest" href="{% static 'imgs/favicon' %}/manifest.json">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/static/assets/main.css">
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home_page' %}">Main page</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="{% url 'courses_all' %}">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'course_create' %}">Create course</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'json_data' %}">Get .json</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <form class="d-flex" method="POST" action="{% url 'search_title' %}">
+            {% csrf_token %}
+            <input class="form-control me-2"
+                   type="search"
+                   placeholder="Search Course"
+                   aria-label="Search" name="searched">
+            <button class="btn btn-outline-secondary"
+                    type="submit">Search</button>
+        </form>
+    </nav>
+</header>
+<br>
+<br>
+<br>
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

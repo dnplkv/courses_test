@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Search
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container">
+    {% if searched %}
+      <h1> Here are results for {{ searched }} courses:</h1>
+    <table class="table table-hover table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Course name</th>
+                <th scope="col">Course Starts</th>
+                <th scope="col">Course Ends</th>
+                <th scope="col">Lectures amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for title in titles %}
+            <tr>
+                <td><a href="{% url 'courses_show' title.id %}">{{ title }}</a></td>
+                <td> {{ title.start_date }} </td>
+                <td> {{ title.finish_date}} </td>
+                <td> {{ title.amount }} </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+    </table>
+    {% else %}
+      <h1> You forgot to search for a course!</h1>
+    {% endif %}
+</div>
+{% endblock %}
+

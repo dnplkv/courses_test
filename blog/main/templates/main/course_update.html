@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Update course
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Update course</h1>
+    <div class="error">
+        <h4 class="error">{{ err }}</h4>
+        <div class="dj_error">
+            {{ form.errors }}
+        </div>
+    </div>
+    <div class="payload">
+        <form method="POST">
+            {% csrf_token %}
+
+            {{ form.title }}
+            {{ form.description }}
+            {{ form.start_date }}
+            {{ form.finish_date }}
+            {{ form.amount }}
+
+            <br>
+            <button class ="btn btn-lg btn-success">Save</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

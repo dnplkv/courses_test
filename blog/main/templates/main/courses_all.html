@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Courses
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Courses</h1>
+    <div class="payload">
+        <table class="table table-hover table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Course ID</th>
+                <th scope="col">Course name</th>
+                <th scope="col">Course Starts</th>
+                <th scope="col">Course Ends</th>
+                <th scope="col">Lectures amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for course in courses %}
+            <tr>
+                <td><a href="{% url 'courses_show' course_id=course.id %}">{{ course.id }}</a></td>
+                <td> {{ course.title }} </td>
+                <td> {{ course.start_date }} </td>
+                <td> {{ course.finish_date}} </td>
+                <td> {{ course.amount }} </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

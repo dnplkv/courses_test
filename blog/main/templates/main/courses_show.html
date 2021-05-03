@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container">
+    <h1>{{ title }}</h1>
+    <div class="payload">
+        <span class="grey_summary"> {{ crs.description }}</span>
+        <br/>
+        <br/>
+        <span class="grey_summary"><i>Course starts on</i> <strong>{{ crs.start_date }}</strong></span>
+        <br/>
+        <span class="grey_summary"><i>Course ends on</i> <strong>{{ crs.finish_date }}</strong></span>
+        <br/>
+        <span class="grey_summary"><i>Lectures amount:</i> <strong>{{ crs.amount }}</strong></span>
+        <div class="update-link">
+                    <br/>
+                <a class="btn btn-success btn-xs" href="{% url 'course_update' course_id=crs.id %}">Edit course</a>
+                <a class="btn btn-danger btn-xs" href="{% url 'delete_course' course_id=crs.id %}">Delete course</a>
+        </div>
+        <hr>
+    </div>
+</div>
+{% endblock %}
