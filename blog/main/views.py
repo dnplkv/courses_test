@@ -76,10 +76,23 @@ def courses_show(request, course_id):
 
 
 def search_title(request):
+
     if request.method == "POST":
         searched = request.POST['searched']
-        titles = Course.objects.filter(title__contains=searched)
+        start_date = request.POST['start_date']
+        finish_date = request.POST['finish_date']
+        filter_obj = {"title__contains": searched}
+        if start_date:
+            filter_obj.update({"start_date__gte": start_date})
+        if finish_date:
+            filter_obj.update({"finish_date__lte": finish_date})
+        titles = Course.objects.filter(**filter_obj)
+        # titles = Course.objects.filter(title__contains=searched,
+        #                                start_date__gte=start_date,
+        #                                finish_date__lte=finish_date)
         return render(request, 'main/search_title.html', {'searched': searched,
+                                                          'start_date': start_date,
+                                                          'finish_date': finish_date,
                                                           'titles': titles})
     else:
         return render(request, 'main/search_title.html', {})

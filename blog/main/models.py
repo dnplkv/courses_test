@@ -9,8 +9,8 @@ class Course(models.Model):
         db_table = 'tbl_course'
     title = models.CharField('Заголовок', max_length=80)
     description = models.CharField('Краткое описание', max_length=90)
-    start_date = models.DateField(null=True)
-    finish_date = models.DateField(null=True)
+    start_date = models.DateField(null=True, blank=True)
+    finish_date = models.DateField(null=True, blank=True)
     amount = models.IntegerField(null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(default=now)
